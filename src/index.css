@@ -11,6 +11,18 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --main-bg-clr: hsl(0, 0%, 100%, 1);
+  --title-txt-clr: hsl(0, 0%, 0%, 0.6);
+  --input-bg-clr: hsl(0, 0%, 96%, 1);
+  --pleaceholder-txt-clr: hsl(0, 0%, 73%, 1);
+  --normal-txt-clr: hsl(0, 0%, 38%, 1);
+  --crossed-txt-clr: hsl(0, 0%, 73%, 1);
+  --input-stroke-clr: hsl(0, 0%, 0%, 0.15);
+  --checbox-clr: hsl(0, 0%, 100%, 1);
+  --checbox-selected-clr: hsl(203, 11%, 85%, 1);
+
+  --addition-input-max-width: 750px;
 }
 
 /** CSS Reset **/
@@ -20,7 +32,9 @@
 *   https://youtu.be/cCAtD_BAHNw 
 */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -40,12 +54,20 @@ body {
 }
 
 /* Media responsive */
-img, picture, svg, video {
+img,
+picture,
+svg,
+video {
   display: block;
   max-width: 100%;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   text-wrap: balance;
 }
 
@@ -61,11 +83,38 @@ p {
   }
 }
 
+/* Utility Classes */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
+  overflow: hidden;
+  white-space: nowrap;
+}
 
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
+}
 
+.add-note-container {
+  margin: 0 auto;
+}
+
+.notes-container {
+  display: grid;
+  gap: 1.25rem;
+  padding: 1.2rem;
+  grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr));
+  grid-auto-rows: minmax(100px, auto);
+  align-items: start;
+  container-type: inline-size;
 }
