@@ -12,7 +12,10 @@ const getRandomColor = () => {
 };
 
 function Note({ id, title, content, creationDate }) {
-  const { removeNote } = useNotes();
+  const { removeNote, patchNoteHandler } = useNotes();
+  const [openDialog, setOpenDialog] = useState(false);
+  const [editedTitle, setEditedTitle] = useState(title);
+  const [editedContent, setEditedContent] = useState(content);
   const [backgroundColor] = useState(getRandomColor);
 
   creationDate = formatDateToJerusalemTime(creationDate); //format date to Jerusalem time
@@ -23,9 +26,27 @@ function Note({ id, title, content, creationDate }) {
     }
   };
 
+  const handleSave = async () => {
+    await patchNoteHandler(id, {
+      title: editedTitle,
+      content: editedContent,
+    });
+    setOpenDialog(false);
+  };
+
+  const handleCancel = () => {
+    setEditedTitle(title);
+    setEditedContent(content);
+    setOpenDialog(false);
+  };
+
   return (
     <>
-      <div className="note-container" style={{ backgroundColor }}>
+      <div
+        className="note-container"
+        style={{ backgroundColor }}
+        onClick={() => setOpenDialog(true)}
+      >
         <div className="note-header">
           <p className="note-title">{title}</p>
           <p className="note-content">{content}</p>
@@ -45,6 +66,29 @@ function Note({ id, title, content, creationDate }) {
           </button>
         </div>
       </div>
+
+      {openDialog && (
+        <div className="dialog-overlay">
+          <div className="dialog">
+            <h2>Edit Note</h2>
+            <input
+              type="text"
+              value={editedTitle}
+              onChange={(e) => setEditedTitle(e.target.value)}
+              placeholder="Title"
+            />
+            <textarea
+              value={editedContent}
+              onChange={(e) => setEditedContent(e.target.value)}
+              placeholder="Content"
+            />
+            <div className="dialog-buttons">
+              <button onClick={handleCancel}>Cancel</button>
+              <button onClick={handleSave}>Done</button>
+            </div>
+          </div>
+        </div>
+      )}
     </>
   );
 }
