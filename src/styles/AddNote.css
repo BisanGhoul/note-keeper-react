@@ -1,0 +1,112 @@
+/* --- Add Note Form --- */
+.note-input-container {
+  background: var(--input-bg-clr);
+  border-radius: 1rem;
+  padding: 1rem 1.5rem;
+  border: 1px solid var(--pleaceholder-txt-clr);
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.08);
+  max-width: var(--addition-input-max-width);
+  margin: 1.5rem auto;
+  overflow: hidden;
+  max-height: 4rem;
+  cursor: pointer;
+  transition: max-height 0.6s ease-out, padding 0.6s ease, box-shadow 0.3s ease;
+}
+
+.note-input-container.expanded {
+  max-height: 32rem;
+  background-color: var(--input-bg-clr);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  cursor: auto;
+}
+
+.note-placeholder,
+.note-input {
+  width: 100%;
+  border: none;
+  background: transparent;
+  outline: none;
+  font-size: 1.25rem;
+  color: var(--normal-txt-clr);
+}
+
+.note-placeholder::placeholder,
+.task-input::placeholder {
+  color: var(--pleaceholder-txt-clr);
+  font-style: italic;
+}
+
+.note-form-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.note-form-container label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: var(--normal-txt-clr);
+}
+
+.note-divider {
+  border: none;
+  height: 1px;
+  background: var(--pleaceholder-txt-clr);
+  margin: 0.25rem 0;
+}
+
+textarea.task-input {
+  resize: vertical;
+  min-height: 100px;
+  padding-top: 0.5rem;
+}
+
+.note-cancel-btn {
+  background-color: #f44336;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  margin-left: auto;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.note-cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+.note-form-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.75rem;
+}
+
+.note-cancel-btn,
+.note-submit-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.note-cancel-btn {
+  background-color: #f44336;
+  color: #fff;
+}
+
+.note-cancel-btn:hover {
+  background-color: #d32f2f;
+}
+
+.note-submit-btn {
+  background-color: #4caf50;
+  color: #fff;
+}
+
+.note-submit-btn:hover {
+  background-color: #388e3c;
+}
