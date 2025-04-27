@@ -1,0 +1,18 @@
+/* Header */
+
+.header {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  gap: 3rem;
+  /* text-align: center; */
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.title {
+  /* margin-bottom: 1rem; */
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--title-txt-clr);
+}
